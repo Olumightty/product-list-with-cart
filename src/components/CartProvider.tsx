@@ -15,7 +15,7 @@ const CartProvider = ({children}: {children: React.ReactNode}) => {
   
   const addToCart = (item: ItemsProps) =>{
     const array = [...cartList, item]
-    setCartList((list) => list = array)
+    setCartList(array)
   }
 
   const removeFromCart = (item: ItemsProps, how: "one" | "all") => {
