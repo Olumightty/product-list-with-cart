@@ -25,7 +25,7 @@ const CartProvider = ({children}: {children: React.ReactNode}) => {
     else{
       setCartList((list) => {
         const foundIndex = list.findIndex((li) => li.name == item.name)
-        return list.filter((li, index) => index != foundIndex)
+        return list.filter((li, index) => li? index != foundIndex : null)
       })
     }
   }
