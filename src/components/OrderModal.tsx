@@ -23,7 +23,7 @@ const OrderModal = ({visibility, setVisibility, total} : {visibility: boolean, s
                     </div>
                 </div>
                     <div className="flex flex-col">
-                        <button className="p-2 bg-Red my-5 rounded-full text-white font-bold hover:bg-rose-900 cursor-pointer">Start New Order</button>
+                        <button onClick={()=> window.location.reload()} className="p-2 bg-Red my-5 rounded-full text-white font-bold hover:bg-rose-900 cursor-pointer">Start New Order</button>
                     </div>
                 </div>
             </div>
