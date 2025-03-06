@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ItemsProps } from './Item'
 import { CartContext } from './CartProvider'
+import { countAndSortObjects } from '../constants'
 
 
 const AddToCart = ({item}: {item: ItemsProps}) => {
@@ -8,13 +9,23 @@ const AddToCart = ({item}: {item: ItemsProps}) => {
     const [itemCount, setItemCount] = useState<number>(0)
     const context = useContext(CartContext)
 
+    useEffect(() => {
+        const findItem = countAndSortObjects(context!.cartList, "name").find((i => i.name == item.name))
+        if(findItem){
+            setItemCount(findItem.count)
+        }
+        else{
+            setItemCount(0)
+        }
+    }, [context?.cartList])
+
     const increment = () => {
-        setItemCount((itemCount) => itemCount + 1)
+        // setItemCount((itemCount) => itemCount + 1)
         context?.addToCart(item)
     }
     const decrement = () => {
         if(itemCount > 0){
-            setItemCount((itemCount) => itemCount - 1)
+            // setItemCount((itemCount) => itemCount - 1)
             context?.removeFromCart(item, "one")
         }
         
